@@ -6,8 +6,13 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-    <div className='w-full text-white'>
-      <Hero />
-    </div>
+    <>
+      <Head>
+        <title>HotelTree | India's most premium hotels</title>
+      </Head>
+      <div className='w-full text-white'>
+        <Hero />
+      </div>
+    </>
   )
 }

@@ -4,7 +4,7 @@ import { Location } from './Icons'
 
 const SearchDrop = ({ locations, setCityText, setSearchDrop }) => {
   return (
-    <div className='bg-white rounded p-2 text-sm text-black mt-4'>
+    <div className='bg-white rounded p-2 text-sm text-black mt-4 z-10 relative'>
       {locations.map((city, ind) => {
         if (ind > 2) {
           return
