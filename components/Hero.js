@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
-import SearchContainer from './SearchContainer/SearchContainer'
+import SearchContainer from './SearchContainer'
 
 const Hero = () => {
 

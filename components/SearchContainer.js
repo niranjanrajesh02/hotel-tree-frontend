@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import Datepicker from '../Datepicker'
-import RoomsDrop from '../RoomsDrop'
-import SearchDrop from '../SearchDrop'
+import Datepicker from './Datepicker'
+import RoomsDrop from './RoomsDrop'
+import SearchDrop from './SearchDrop'
 import { cities } from 'data/cities'
 import Fuse from 'fuse.js';
 import { useRouter } from 'next/router'
@@ -18,6 +18,9 @@ const SearchContainer = () => {
   useEffect(() => {
     if (router && isHotelsPage) {
       setCityText(router.query.city)
+      setCheckInDate(router.query.checkin)
+      setCheckOutDate(router.query.checkout)
+      setRooms(router.query.rooms)
     }
   }, [router])
   function handleSearchRooms() {
@@ -76,12 +79,12 @@ const SearchContainer = () => {
           </div>
           <div className=''>
             <p>Rooms</p>
-            <RoomsDrop setRooms={setRooms} />
+            <RoomsDrop rooms={rooms} setRooms={setRooms} />
           </div>
         </div>
         <div onClick={handleSearchRooms}
           className={`${isHotelsPage ? "mt-8" : "mt-10 lg:my-4  "}  text-md bg-white text-black p-4 rounded-3xl cursor-pointer 
-        hover:bg-red-400 hover:text-white hover:duration-200 `}>
+        hover:bg-lightred hover:text-white hover:duration-200 `}>
           <h3>Search for Hotels</h3>
         </div>
       </div>

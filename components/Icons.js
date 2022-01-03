@@ -59,7 +59,6 @@ export function UserIcon() {
 }
 
 export function Location() {
-
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -70,8 +69,19 @@ export function Location() {
       <path d="M12 0C7.802 0 4 3.403 4 7.602 4 11.8 7.469 16.812 12 24c4.531-7.188 8-12.2 8-16.398C20 3.403 16.199 0 12 0zm0 11a3 3 0 110-6 3 3 0 010 6z"></path>
     </svg>
   );
+}
 
-
+export function LocationSmall() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+    >
+      <path d="M12 0C7.802 0 4 3.403 4 7.602 4 11.8 7.469 16.812 12 24c4.531-7.188 8-12.2 8-16.398C20 3.403 16.199 0 12 0zm0 11a3 3 0 110-6 3 3 0 010 6z"></path>
+    </svg>
+  );
 }
 
 export function Small() {
@@ -117,8 +127,8 @@ export function BackArrow() {
 export function RightArrow() {
   return (
     <svg
-      width="35"
-      height="35"
+      width="18"
+      height="18"
       fill="none"
       stroke="currentColor"
       strokeLinecap="round"

@@ -8,7 +8,6 @@ const options = [
   { value: 3.5, label: 'Fair (3.5)' },
 ]
 
-
 const RatingsDrop = ({ setRatings }) => {
   function handleChange(selectedOption) {
     setRatings(selectedOption.value)
