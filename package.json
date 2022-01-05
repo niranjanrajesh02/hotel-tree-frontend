@@ -11,9 +11,12 @@
     "fuse.js": "^6.5.3",
     "next": "^12.0.7",
     "react": "17.0.2",
+    "react-avatar": "^4.0.0",
     "react-datepicker": "^4.5.0",
     "react-dom": "17.0.2",
+    "react-image-gallery": "^1.2.7",
     "react-input-slider": "^6.0.1",
+    "react-responsive-carousel": "^3.2.22",
     "react-select": "^5.2.1"
   },
   "devDependencies": {

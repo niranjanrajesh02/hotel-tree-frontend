@@ -3,16 +3,45 @@ export const hotelsData = [
     id: 102,
     name: 'Taj Vivanta',
     description: 'Get the celebrity treatment with world-class service at Vivanta Chennai IT Expressway OMR',
-    rooms: [{
-      name: "Deluxe Room",
-      full_price: 6900,
-      disc_price: 5000,
-      guests: 2,
-      view: "city"
-    }],
+    rooms: [
+      {
+        name: "Deluxe Room",
+        full_price: 6900,
+        image: 'https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/17803754.jpg?k=901ad701893f0d80929f61e134c5b1d419c1ffe367c52b8f3f6649e157a2f7a5&o=',
+        disc_price: 5000,
+        guests: 2,
+        view: "city",
+        breakfast: 699
+      },
+      {
+        name: "Executive Room",
+        full_price: 8000,
+        image: "https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/20543037.jpg?k=a64d49eacba8a41e87eb6579dce038878353e4fb00dcfee0dc0bb3716418c702&o=",
+        disc_price: 7200,
+        guests: 3,
+        view: "mountain",
+        breakfast: 0
+      }
+    ],
     orders: [],
-    reviews: [],
+    reviews: [
+      {
+        user_name: 'Bob Savage',
+        review_title: "Best holiday experience",
+        review_body: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus doloribus laudantium, cupiditate ipsa beatae reprehenderit nobis quia tempore ut non?',
+        rating: 5,
+        date: null
+      },
+      {
+        user_name: 'Jane Ross',
+        review_title: "Worst holiday experience",
+        review_body: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus doloribus laudantium, cupiditate ipsa beatae reprehenderit nobis quia tempore ut non?',
+        rating: 1,
+        date: null
+      },
+    ],
     avg_rating: 4.3,
+    rating_result: "Very Good",
     base_price: 5000,
     images: [
       'https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/194005772.jpg?k=988b3d61b67ccf90b7ff2a6af946700a9330c639d0fee964688c577a68713734&o=&hp=1',
@@ -39,6 +68,7 @@ export const hotelsData = [
     orders: [],
     reviews: [],
     avg_rating: 4.9,
+    rating_result: "Excellent",
     base_price: 7000,
     images: [
       'https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/46318608.jpg?k=dc48d6a27141d2b83e6623daef3931fdc25431a32d9917a7126b2f75676f555f&o=&hp=1',

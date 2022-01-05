@@ -20,7 +20,7 @@ const RoomsDrop = ({ setRooms, rooms }) => {
   }
   return (
     <div className='mt-4 text-black h-4'>
-      <Select options={options} value={options[defaultIndex]} onChange={handleChange} />
+      <Select options={options} defaultValue={options[defaultIndex]} onChange={handleChange} />
     </div>
   )
 }

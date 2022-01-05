@@ -17,10 +17,10 @@ const SearchContainer = () => {
   const isHotelsPage = router.pathname.includes("hotels")
   useEffect(() => {
     if (router && isHotelsPage) {
-      setCityText(router.query.city)
-      setCheckInDate(router.query.checkin)
-      setCheckOutDate(router.query.checkout)
-      setRooms(router.query.rooms)
+      setCityText(router.query?.city)
+      setCheckInDate(router.query?.checkin)
+      setCheckOutDate(router.query?.checkout)
+      setRooms(router.query?.rooms)
     }
   }, [router])
   function handleSearchRooms() {
