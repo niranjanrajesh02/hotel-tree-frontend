@@ -11,7 +11,8 @@ export const hotelsData = [
         disc_price: 5000,
         guests: 2,
         view: "city",
-        breakfast: 699
+        breakfast: 699,
+        remaining: 12,
       },
       {
         name: "Executive Room",
@@ -20,7 +21,8 @@ export const hotelsData = [
         disc_price: 7200,
         guests: 3,
         view: "mountain",
-        breakfast: 0
+        breakfast: 0,
+        remaining: 5
       }
     ],
     orders: [],

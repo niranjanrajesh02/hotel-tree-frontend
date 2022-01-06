@@ -18,7 +18,7 @@ const index = () => {
         <SearchContainer />
         <FiltersMenu />
       </div>
-      <div className=' bg-grey lg:px-40 z-1 relative '>
+      <div className=' bg-grey lg:px-40 z-1 pt-5 relative '>
         {hotelsData.map((item, ind) => {
           return (
             <div key={ind}>

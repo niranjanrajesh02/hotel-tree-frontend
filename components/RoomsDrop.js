@@ -14,7 +14,7 @@ const RoomsDrop = ({ setRooms, rooms }) => {
     setRooms(selectedOption.value)
   }
 
-  let defaultIndex = 1;
+  let defaultIndex = 0;
   if (router.pathname.includes("/hotels")) {
     defaultIndex = options.findIndex(x => x.label === rooms);
   }

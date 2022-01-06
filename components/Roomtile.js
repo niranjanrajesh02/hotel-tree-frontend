@@ -27,10 +27,11 @@ const Roomtile = ({ room }) => {
           </div>
         </div>
       </div>
-      <div className='w-1/6 text-center border-r-2 border-lightred  flex items-center justify-center'>
-        <button className='bg-lightred hover:bg-red-600 p-2 rounded-lg hover:duration-400'>
+      <div className='w-1/6 text-center border-r-2 border-lightred  flex flex-col  items-center justify-center'>
+        <button className='bg-lightred hover:bg-red-600 p-2 rounded-lg hover:duration-400 mb-1 '>
           Reserve
         </button>
+        <p className='text-xs text-red-500'>Hurry only {room.remaining} left!</p>
       </div>
     </div>
   )
