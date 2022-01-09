@@ -7,8 +7,7 @@ import { LocationSmall, RightArrow } from './Icons'
 
 const HotelTile = ({ hotel }) => {
   return (
-    <Link href={`/hotels/${hotel.id}`}>
-
+    <Link href={`/hotels/${hotel._id}`}>
       <div className='bg-white border-lightred border-2 p-5 mb-5 rounded-xl flex flex-row relative cursor-pointer z-0 hover:bg-gray-200'>
         <div className='w-48 h-48  '>
           <Image src={hotel.images[0]} width={100} height={100} layout='responsive' className='rounded-lg' objectFit="cover" />
@@ -17,7 +16,7 @@ const HotelTile = ({ hotel }) => {
           <div className='flex flex-row justify-between'>
             <h2 className='text-lg font-bold'>{hotel.name}</h2>
             <div className='flex gap-2 items-center'>
-              <div className='p-2 bg-lightred rounded-lg w-max'>{hotel.avg_rating}</div>
+              <div className='p-2 bg-lightred rounded-lg w-max'>{hotel.avg_rating.toFixed(1)}</div>
               <p>Excellent</p>
             </div>
           </div>
@@ -38,7 +37,7 @@ const HotelTile = ({ hotel }) => {
             </div>
             <div className='flex flex-row gap-2 items-center w-max'>
               <p className='line-through text-xs text-red-600'>{indianNumberConverter(hotel.rooms[0].full_price)}</p>
-              <p>{indianNumberConverter(hotel.rooms[0].disc_price)}</p>
+              <p>{indianNumberConverter(hotel.base_price)}</p>
             </div>
           </div>
           <div className='bg-lightred w-max mt-1 p-2 text-sm rounded-lg flex gap-1 items-center absolute right-5 hover:bg-red-600 cursor-pointer'>

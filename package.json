@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "fuse.js": "^6.5.3",
     "next": "^12.0.7",
     "react": "17.0.2",
@@ -16,8 +17,10 @@
     "react-dom": "17.0.2",
     "react-image-gallery": "^1.2.7",
     "react-input-slider": "^6.0.1",
+    "react-loader-spinner": "^5.0.6",
     "react-responsive-carousel": "^3.2.22",
-    "react-select": "^5.2.1"
+    "react-select": "^5.2.1",
+    "react-spinner": "^0.2.7"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",

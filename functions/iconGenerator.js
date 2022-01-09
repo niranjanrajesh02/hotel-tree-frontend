@@ -25,7 +25,8 @@ export default function iconGenerator(item) {
       </li>
     )
   }
-  else if (item === "pool") {
+  else if (item === "swimming_pool") {
+
     return (
       <li className="mt-2 flex gap-2">
         <Pool />
@@ -54,7 +55,7 @@ export default function iconGenerator(item) {
       <City />
     )
   }
-  else if (item === "sea" || item === "lake" || item === "river") {
+  else if (item === "sea" || item === "lake" || item === "river" || item === "pool") {
     return (
       <Beach />
     )

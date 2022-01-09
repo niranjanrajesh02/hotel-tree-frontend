@@ -4,9 +4,9 @@ import Select from 'react-select'
 const options = [
   { label: "Swimming Pool", value: "pool" },
   { label: "Bar", value: "bar" },
-  { label: "Restaurant", value: "restaurant" },
   { label: "Car Parking", value: "parking" },
   { label: "Gym", value: "gym" },
+  { label: "Pets", value: "pets" },
 ];
 
 const FiltersDrop = ({ setFilters }) => {
