@@ -4,8 +4,8 @@ import Select from 'react-select'
 const options = [
   { label: "Featured", value: null },
   { label: "User Ratings", value: "avg_rating: -1" },
-  { label: "Price: Ascending", value: "price:1" },
-  { label: "Price: Descending", value: "price:-1" },
+  { label: "Price: Ascending", value: "base_price:1" },
+  { label: "Price: Descending", value: "base_price:-1" },
   { label: "Alphabetical: Ascending", value: "name:1" },
   { label: "Alphabetical: Descending", value: "name:-1" },
 ]

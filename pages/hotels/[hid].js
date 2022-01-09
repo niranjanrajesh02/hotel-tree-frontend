@@ -66,8 +66,11 @@ const HotelPage = () => {
                 <div className='p-2 bg-lightred rounded-lg w-max'>{hotel.avg_rating}</div>
                 <p>{hotel.rating_result}</p>
               </div>
-              <p className='cursor-pointer underline hover:text-lightred w-full text-right'>{hotel.reviews.length} reviews</p>
+              <p onClick={() => window.scrollTo(0, 10000)} className='cursor-pointer underline hover:text-lightred w-full text-right'>{hotel.reviews.length} reviews</p>
             </div>
+          </div>
+          <div>
+            <button className='bg-lightred p-2 rounded-lg hover:bg-red-600 w-max'>Save for later</button>
           </div>
         </div>
       </div >
