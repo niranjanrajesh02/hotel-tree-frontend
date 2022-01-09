@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import { ChevronDown, ChevronUp, UserIcon } from './Icons'
 import Link from 'next/link';
-
+import { useUser } from '@auth0/nextjs-auth0';
 const Navbar = () => {
+  const { user, error, isLoading } = useUser();
   const [menuClicked, setMenuClicked] = useState(null);
   return (
     <div className='w-full bg-lightred flex flex-row items-center p-2 gap-2 justify-between'>
@@ -18,14 +19,18 @@ const Navbar = () => {
         </Link>
       </div>
       <div className='w-4/12 flex justify-center hover:text-white'>
-        <Link href="/profile">
-          <div className='w-min cursor-pointer'>
-            <UserIcon />
+        {user && (
+          <Link href="/profile">
+            <div className='w-min cursor-pointer'>
+              <UserIcon />
+            </div>
+          </Link>
+        )}
+        {!user && (
+          <div>
+            <a href="/api/auth/login">Login</a>
           </div>
-        </Link>
-        <div>
-          <a href="/api/auth/login">Login</a>
-        </div>
+        )}
       </div>
     </div>
   )

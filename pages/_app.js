@@ -9,7 +9,6 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   return (
     <UserProvider>
-
       {router.pathname === "/" ? null : <Navbar />}
       <Component {...pageProps} />
 
