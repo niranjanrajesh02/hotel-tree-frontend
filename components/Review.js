@@ -1,8 +1,9 @@
 import React from 'react'
 import Avatar from 'react-avatar';
 const Review = ({ review }) => {
+  console.log(review);
   return (
-    <div className='p-4 border border-lightred max-w-xl relative'>
+    <div className='p-4 border border-lightred max-h-xl min-w-xl relative'>
       <div className='flex gap-2'>
         <Avatar name={review.user_name} size={50} />
         <div>
@@ -13,7 +14,7 @@ const Review = ({ review }) => {
       <div className='mt-3' >
         <h5 className='text-xl font-semibold'>{review.review_title}</h5>
         <div className='mt-1'>
-          <p>{review.review_body}</p>
+          <p>{review.review_text}</p>
         </div>
       </div>
       <div>

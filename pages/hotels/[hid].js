@@ -36,7 +36,33 @@ const HotelPage = () => {
     }
   }, [router.query])
 
+  function reviewSubmitHandler() {
+    var data = JSON.stringify({
+      "user_id": "101",
+      "hotel_id": "61d834e0e919939750273865",
+      "review_title": "An Alright Experience",
+      "review_text": "I some decent fun but rooms were old, I would love to come again.",
+      "rating": 4
+    });
 
+    var config = {
+      method: 'post',
+      url: '/hotels/review',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: data
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+  }
   return (
     <div className='mx-20 mt-5'>
       {(hotel && router.query.hid) && (
@@ -114,6 +140,7 @@ const HotelPage = () => {
               </div>
             </div>
             <div className='flex flex-wrap gap-20 mt-5 justify-center'>
+              {console.log(hotel.reviews)}
               {hotel.reviews.map((item, ind) => <Review review={item} />)}
             </div>
             {!reviewMode && (

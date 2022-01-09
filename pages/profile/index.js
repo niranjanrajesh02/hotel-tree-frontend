@@ -2,8 +2,10 @@ import { Edit } from '@components/Icons'
 import { user_data } from 'data/user-dummy'
 import Link from 'next/link'
 import React, { useState } from 'react'
-
+import { useUser } from '@auth0/nextjs-auth0';
 const Profile = () => {
+  const { user, error, isLoading } = useUser();
+  console.log(user);
   const [loadedUser, setLoadedUser] = useState(user_data)
   const [editMode, setEditMode] = useState(false)
   const [nameField, setNameField] = useState(user_data.user_name);
@@ -11,10 +13,15 @@ const Profile = () => {
   const [addressField, setAddressField] = useState(user_data.address);
   const [emailField, setEmailField] = useState(user_data.email);
   return (
-    <div className='px-20'>
-      <div className='w-full text-center text-5xl  flex gap-2 justify-center mt-5'>
-        <h1 className=''>Welcome,</h1>
-        <p className='text-lightred'>{loadedUser.user_name}</p>
+    <div className='px-20 '>
+      <div className='flex flex-col items-center'>
+        <div className='w-full text-center text-5xl  flex gap-2 justify-center mt-5'>
+          <h1 className=''>Welcome,</h1>
+          <p className='text-lightred'>{loadedUser.user_name}</p>
+        </div>
+        <div className='w-max text-center underline mt-3 hover:text-lightred'>
+          <a href="/api/auth/logout">Logout</a>
+        </div>
       </div>
       <div className='flex flex-col items-center justify-center mb-5 '>
         <div className='relative lg:w-3/6 mt-10 text-center p-10 lg:p-5  rounded-lg border border-lightred'>
