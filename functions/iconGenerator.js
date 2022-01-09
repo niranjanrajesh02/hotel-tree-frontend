@@ -1,7 +1,7 @@
 import { Beach, City, Dining, Drink, Gym, Parking, Pets, Pool, Tree } from "@components/Icons";
 
 export default function iconGenerator(item) {
-  if (item === "luxury") {
+  if (item === "restaurant") {
     return (
       <li className="mt-2 items-center flex gap-2">
         <Dining />

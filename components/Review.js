@@ -3,7 +3,7 @@ import Avatar from 'react-avatar';
 const Review = ({ review }) => {
   console.log(review);
   return (
-    <div className='p-4 border border-lightred max-h-xl min-w-xl relative'>
+    <div className='p-4 border border-lightred max-h-xl w-4/12 relative'>
       <div className='flex gap-2'>
         <Avatar name={review.user_name} size={50} />
         <div>

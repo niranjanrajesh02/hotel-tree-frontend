@@ -9,8 +9,10 @@ import Roomtile from '@components/Roomtile';
 import Review from '@components/Review';
 import { useRouter } from 'next/router'
 import axios from 'axios';
+import { useUser } from '@auth0/nextjs-auth0';
 
 const HotelPage = () => {
+  const { user, error, isLoading } = useUser();
   const router = useRouter();
   const [hotel, setHotel] = useState(null)
   const [reviewMode, setReviewMode] = useState(false)
@@ -38,11 +40,11 @@ const HotelPage = () => {
 
   function reviewSubmitHandler() {
     var data = JSON.stringify({
-      "user_id": "101",
-      "hotel_id": "61d834e0e919939750273865",
-      "review_title": "An Alright Experience",
-      "review_text": "I some decent fun but rooms were old, I would love to come again.",
-      "rating": 4
+      "user_id": user.nickname,
+      "hotel_id": router.query.hid,
+      "review_title": reviewTitle,
+      "review_text": reviewBody,
+      "rating": rating
     });
 
     var config = {
@@ -56,7 +58,8 @@ const HotelPage = () => {
 
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
+        console.log((response.data));
+        router.reload();
       })
       .catch(function (error) {
         console.log(error);
@@ -135,7 +138,7 @@ const HotelPage = () => {
             <h2 className='text-2xl'>Ratings and Reviews</h2>
             <div className='flex gap-2 items-center text-xl mt-2 justify-center'>
               <div className='flex items-center gap-5'>
-                <div className='p-2 bg-lightred rounded-lg w-max'>{hotel.avg_rating}</div>
+                <div className='p-2 bg-lightred rounded-lg w-max'>{hotel.avg_rating.toFixed(1)}</div>
                 <p>{hotel.rating_result}</p>
               </div>
             </div>
@@ -143,7 +146,8 @@ const HotelPage = () => {
               {console.log(hotel.reviews)}
               {hotel.reviews.map((item, ind) => <Review review={item} />)}
             </div>
-            {!reviewMode && (
+            {(!reviewMode && user) && (
+
               <div className='flex justify-center mt-5'>
                 <button onClick={() => setReviewMode(true)}
                   className='bg-lightred p-2 rounded-lg hover:bg-red-600'>
@@ -171,7 +175,7 @@ const HotelPage = () => {
                   onChange={(e) => setReviewBody(e.target.value)} />
                 <div className='flex justify-center gap-5'>
                   <button onClick={() => setReviewMode(false)} className='bg-lightred w-max p-2 rounded-lg hover:bg-red-600'>Go back</button>
-                  <button onClick={() => setReviewMode(true)}
+                  <button onClick={reviewSubmitHandler}
                     className='bg-lightred p-2 rounded-lg hover:bg-red-600 w-max'>
                     Submit Review
                   </button>
