@@ -10,11 +10,11 @@ const options = [
 
 const RatingsDrop = ({ setRatings }) => {
   function handleChange(selectedOption) {
-    setRatings(selectedOption.value)
+    setRatings(selectedOption ? selectedOption.value : 0)
   }
   return (
     <div className='w-40 text-sm text-black h-4'>
-      <Select options={options} defaultValue={"1"} onChange={handleChange} />
+      <Select options={options} defaultValue={"1"} onChange={handleChange} isClearable />
     </div>
   )
 }

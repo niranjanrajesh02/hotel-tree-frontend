@@ -24,9 +24,18 @@ const index = () => {
 
   useEffect(() => {
     if (router.query) {
+
+      let amenitiesVal = "";
+      for (let i = 0; i < addFilters.length; i++) {
+        amenitiesVal += `amenities[]=${addFilters[i]}&`;
+      }
+      console.log(amenitiesVal);
+
+
+      // console.log("amenitiesVal" + `&urmom${3 + 4}`);
       var config = {
         method: 'get',
-        url: `/hotels/?minPrice=${priceFilter}&minRating=${ratings}&sort=${sortOrder}&city=${router.query.city}&amenities=${addFilters}`,
+        url: `/hotels/?minPrice=${priceFilter}&minRating=${ratings}&sort=${sortOrder}&city=${router.query.city}&${amenitiesVal}`,
       };
       axios(config)
         .then(function (response) {
@@ -57,13 +66,13 @@ const index = () => {
                   axis="x"
                   xstep={1000}
                   xmin={1000}
-                  xmax={100000}
+                  xmax={75000}
                   x={priceFilter}
                   onChange={({ x }) => setPriceFilter(parseFloat(x.toFixed(2)))}
                 />
                 <div className='flex justify-between text-xs'>
                   <p>{indianNumberConverter(priceFilter)}+</p>
-                  <p>Max: {indianNumberConverter(100000)}</p>
+                  <p>Max: {indianNumberConverter(75000)}</p>
                 </div>
               </div>
               <div className='border-none lg:border-r px-4 border-gray-400 relative z-0 w-max bg-gray-50'>
