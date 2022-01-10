@@ -8,7 +8,7 @@ import { LocationSmall, RightArrow } from './Icons'
 const HotelTile = ({ hotel, rooms }) => {
   return (
     <Link href={`/hotels/${hotel._id}?rooms=${rooms}`}>
-      <div className='bg-white border-lightred border-2 p-5 mb-5 rounded-xl flex flex-row relative cursor-pointer z-0 hover:bg-gray-200'>
+      <div className='bg-white border-lightred border-2 p-8 mb-5 rounded-xl flex flex-row relative cursor-pointer z-0 hover:bg-gray-200'>
         <div className='w-48 h-48  '>
           <Image src={hotel.images[0]} width={100} height={100} layout='responsive' className='rounded-lg' objectFit="cover" />
         </div>
@@ -17,7 +17,7 @@ const HotelTile = ({ hotel, rooms }) => {
             <h2 className='text-lg font-bold'>{hotel.name}</h2>
             <div className='flex gap-2 items-center'>
               <div className='p-2 bg-lightred rounded-lg w-max'>{hotel.avg_rating.toFixed(1)}</div>
-              <p>Excellent</p>
+              <p>{hotel.rating_result}</p>
             </div>
           </div>
           <div>
@@ -40,7 +40,7 @@ const HotelTile = ({ hotel, rooms }) => {
               <p>{indianNumberConverter(hotel.base_price)}</p>
             </div>
           </div>
-          <div className='bg-lightred w-max mt-1 p-2 text-sm rounded-lg flex gap-1 items-center absolute right-5 hover:bg-red-600 cursor-pointer'>
+          <div className='bg-lightred w-max mt-1 p-2 text-sm rounded-lg flex gap-1 items-center absolute bottom-2 right-5 hover:bg-red-600 cursor-pointer'>
             <button>See More</button>
             <a className='mt-1'><RightArrow /></a>
           </div>

@@ -1,6 +1,6 @@
 export const cities = [
   {
-    label: "New Delhi",
+    label: "Delhi",
     value: "Delhi"
   },
   {

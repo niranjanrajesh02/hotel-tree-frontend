@@ -5,7 +5,12 @@ import SearchDrop from './SearchDrop'
 import { cities } from 'data/cities'
 import Fuse from 'fuse.js';
 import { useRouter } from 'next/router'
+import axios from 'axios'
+import { useUser } from '@auth0/nextjs-auth0';
+
+
 const SearchContainer = () => {
+  const { user, error, isLoading } = useUser();
   const [searchDrop, setSearchDrop] = useState(false)
   const [searchText, setSearchText] = useState("")
   const [dispCities, setDispCities] = useState([])
@@ -23,10 +28,34 @@ const SearchContainer = () => {
       setRooms(router.query?.rooms)
     }
   }, [router])
-  function handleSearchRooms() {
+  async function handleSearchRooms() {
     if (cityText === "") {
       return
     } else {
+      if (user) {
+        var data = JSON.stringify({
+          "city_name": cityText,
+          "user_id": user.nickname
+        });
+
+        var config = {
+          method: 'post',
+          url: '/user/update-city',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          data: data
+        };
+
+        axios(config)
+          .then(function (response) {
+            console.log("City update" + response.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+
       router.push(`/hotels?city=${cityText}&checkin=${checkInDate}&checkout=${checkOutDate}&rooms=${rooms}`)
     }
   }

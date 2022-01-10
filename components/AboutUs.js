@@ -12,7 +12,10 @@ const AboutUs = () => {
           <div className='w-3/6'>
             <h3 className='text-4xl font-bold text-lightred mb-5'>We are HotelTree</h3>
             <p className='text-justify'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit obcaecati modi dicta, possimus officiis eum, necessitatibus laborum quam odit quasi voluptatem! Aliquid eaque optio libero maiores inventore, quae perspiciatis, omnis commodi expedita molestias amet aspernatur ipsum cupiditate eum dolores autem. Aperiam fuga, reiciendis repellat corporis provident asperiores, illum voluptatibus velit delectus amet eum. Doloribus repellendus possimus quod quaerat recusandae, inventore accusantium reiciendis numquam? Odio sequi aliquam expedita incidunt quaerat unde cumque optio nam quas maxime. Officia nemo, quisquam laborum laudantium corporis consectetur sapiente sint at! Ut est delectus architecto atque! Porro fugiat quod facere exercitationem animi iusto officiis cumque doloremque?
+              At HotelTree, we want to give our customers the holiday they deserve. For this, we have partnered with the leading hotel chains across India to offer a one-of-a-kind experience for our travellers.
+              We are currently operating in the six cities of Chennai, Gurgaon, New Delhi, Kolkata, Mumbai and Pune. We have handpicked the most luxurious, well-reviewed hotels in each city and welcomed them into our service.
+              We hope to give each of you a memorable holiday of a lifetime.
+
             </p>
           </div>
           <div className='w-3/6'>
