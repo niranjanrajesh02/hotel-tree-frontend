@@ -62,7 +62,7 @@ const RecommendedHotels = () => {
           </div>
           <div className='flex lg:flex-row flex-col flex-wrap justify-center'>
             {hotels?.map((item, ind) => (
-              <div className='px-5 lg:px-20 mt-10 lg:w-5/12'>
+              <div className='px-5 w-full lg:px-20 mt-10 lg:w-5/12'>
                 <HotelTile hotel={item} rooms={1} />
               </div>
             ))}

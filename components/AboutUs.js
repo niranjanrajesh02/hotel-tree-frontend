@@ -6,9 +6,9 @@ const AboutUs = () => {
   return (
     <div className='text-black mb-20'>
       <div className='h-20 mb-5 bg-lightred border-lightred' />
-      <div className='px-20'>
+      <div className='lg:px-20 text-center'>
         <h3 className='text-4xl text-center underline'>About Us</h3>
-        <div className='mt-10 flex gap-10 items-center '>
+        <div className='mt-10 flex lg:flex-row flex-col gap-10 items-center '>
           <div className='w-3/6'>
             <h3 className='text-4xl font-bold text-lightred mb-5'>We are HotelTree</h3>
             <p className='text-justify'>
