@@ -5,9 +5,9 @@ import Link from 'next/link'
 import React from 'react'
 import { LocationSmall, RightArrow } from './Icons'
 
-const HotelTile = ({ hotel }) => {
+const HotelTile = ({ hotel, rooms }) => {
   return (
-    <Link href={`/hotels/${hotel._id}`}>
+    <Link href={`/hotels/${hotel._id}?rooms=${rooms}`}>
       <div className='bg-white border-lightred border-2 p-5 mb-5 rounded-xl flex flex-row relative cursor-pointer z-0 hover:bg-gray-200'>
         <div className='w-48 h-48  '>
           <Image src={hotel.images[0]} width={100} height={100} layout='responsive' className='rounded-lg' objectFit="cover" />

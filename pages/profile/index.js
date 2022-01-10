@@ -117,13 +117,13 @@ const Profile = () => {
               </div>
             </div>
             <div className='flex gap-10 mt-10 '>
-              <Link href="/profile/bookings">
+              <Link href={`/profile/bookings`}>
                 <div className='cursor-pointer w-56  bg-lightred h-32 text-white flex 
         justify-center items-center rounded-lg hover:bg-red-600'>
                   <h5 className='text-4xl'>Bookings</h5>
                 </div>
               </Link>
-              <Link href="/profile/saved">
+              <Link href={`/profile/saved?user_id=${user.nickname}`}>
                 <div className='cursor-pointer w-56  bg-lightred h-32 text-white flex 
         justify-center items-center rounded-lg hover:bg-red-600'>
                   <h5 className='text-4xl'>Saved</h5>

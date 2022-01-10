@@ -10,6 +10,8 @@ import Review from '@components/Review';
 import { useRouter } from 'next/router'
 import axios from 'axios';
 import { useUser } from '@auth0/nextjs-auth0';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const HotelPage = () => {
   const { user, error, isLoading } = useUser();
@@ -21,6 +23,7 @@ const HotelPage = () => {
   const [rating, setRating] = useState(1)
 
   useEffect(() => {
+    // console.log(router.query);
     if (router.query.hid) {
       var config = {
         method: 'get',
@@ -66,10 +69,76 @@ const HotelPage = () => {
       });
 
   }
+
+
+  function alreadySaved() {
+    if (!user) {
+      return false
+    }
+    var config = {
+      method: 'get',
+      url: `/user/verify/${user.nickname}`,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log((response.data));
+        for (let i = 0; i < response.data.saved; i++) {
+          if (response.data.saved[i].hotel_name === hotel.name) {
+            console.log("already saved");
+            return true
+          }
+        }
+        return false
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+  }
+
+  function saveHotelHandler() {
+    if (!user) {
+      toast.error('You need to be signed in to save!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      })
+    }
+    else {
+      var data = JSON.stringify({
+        "hotel_id": router.query.hid,
+        "user_id": user.nickname
+      });
+
+      var config = {
+        method: 'post',
+        url: '/hotels/save',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: data
+      };
+      axios(config)
+        .then(function (response) {
+          console.log((response.data));
+          router.push('/profile/saved')
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  }
+
   return (
     <div className='mx-20 mt-5'>
-      {(hotel && router.query.hid) && (
+      {(hotel && router.query.hid && !isLoading) && (
         <>
+
           <div>
             <h1 className='text-3xl font-bold'>{hotel.name}</h1>
             <div className='flex mt-4 items-center gap-2'>
@@ -78,6 +147,7 @@ const HotelPage = () => {
               <p className='text-sm underline'>{hotel.distance_center} km away from city center</p>
             </div>
           </div>
+
           <div className='mt-5 px-0 flex flex-col lg:flex-row justify-around'>
             <div className='lg:w-2/6'>
               <Carousel showArrows={false}>
@@ -110,14 +180,26 @@ const HotelPage = () => {
                 </div>
                 <div className=' text-right'>
                   <div className='flex gap-2 items-center'>
-                    <div className='p-2 bg-lightred rounded-lg w-max'>{hotel?.avg_rating}</div>
+                    <div className='p-2 bg-lightred rounded-lg w-max'>{hotel?.avg_rating.toFixed(1)}</div>
                     <p>{hotel?.rating_result}</p>
                   </div>
                   <p onClick={() => window.scrollTo(0, 10000)} className='cursor-pointer underline hover:text-lightred w-full text-right'>{hotel?.reviews.length} reviews</p>
                 </div>
               </div>
               <div>
-                <button className='bg-lightred p-2 rounded-lg hover:bg-red-600 w-max'>Save for later</button>
+                <ToastContainer
+                  position="top-left"
+                  autoClose={5000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                />
+                {alreadySaved() ? <p>Saved!</p> : <button onClick={saveHotelHandler} className='bg-lightred p-2 rounded-lg hover:bg-red-600 w-max'>Save for later</button>}
+
               </div>
             </div>
           </div >
@@ -131,7 +213,7 @@ const HotelPage = () => {
               <div className='w-1/6 text-center border-r-2 border-white'><p>Book Now</p></div>
             </div>
             {hotel?.rooms.map((item, ind) => (
-              <Roomtile room={item} />
+              <Roomtile user={user} rooms={router.query.rooms} room={item} />
             ))}
           </section>
           <section className='my-10'>
@@ -153,6 +235,11 @@ const HotelPage = () => {
                   className='bg-lightred p-2 rounded-lg hover:bg-red-600'>
                   Write a review
                 </button>
+              </div>
+            )}
+            {(!reviewMode && !user) && (
+              <div className='flex justify-center mt-5'>
+                <p>You need to be logged in to write a review!</p>
               </div>
             )}
             {reviewMode && (

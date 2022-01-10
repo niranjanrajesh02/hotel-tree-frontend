@@ -93,7 +93,7 @@ const index = () => {
             {hotels.map((item, ind) => {
               return (
                 <div key={ind}>
-                  <HotelTile hotel={item} />
+                  <HotelTile hotel={item} rooms={router.query.rooms} />
                 </div>
               )
             })}

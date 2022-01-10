@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React from 'react'
 import Avatar from 'react-avatar';
 const Review = ({ review }) => {
@@ -8,7 +9,7 @@ const Review = ({ review }) => {
         <Avatar name={review.user_name} size={50} />
         <div>
           <p className='font-semibold text-lg'>{review.user_name}</p>
-          <p className='text-gray-700 text-sm'>{review.date ? review.date : "9 January 2021"}</p>
+          <p className='text-gray-700 text-sm'>{moment(review.date).format('MMMM Do YYYY')}</p>
         </div>
       </div>
       <div className='mt-3' >
